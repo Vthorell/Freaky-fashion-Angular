@@ -1,0 +1,24 @@
+<div class="product-list-container">
+    <div class="flex">
+        <h2>Produktlista</h2>
+        <a href="http://localhost:3000/admin/products/new"><button class="add-button">Lägg till ny produkt</button></a>   
+    </div>
+    <!-- Tabell med produkter -->
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Produktnamn</th>
+          <th>Pris</th>
+          <th>SKU</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Här kommer dina produkter visas -->
+        <tr *ngFor="let product of products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }} kr</td>
+          <td>{{ product.sku }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

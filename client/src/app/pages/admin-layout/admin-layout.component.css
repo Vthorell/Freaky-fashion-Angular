@@ -1,0 +1,17 @@
+.header {
+    background-color: rgb(75, 75, 75);
+    color: white;
+    padding: 5px;
+    border: solid 3px black;
+}
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-top: 1px;
+}
+.sidebar {
+    background-color: lightgrey;
+    height: 700px;
+    text-align: center;
+    border: solid 3px black;
+}

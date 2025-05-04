@@ -1,0 +1,21 @@
+
+<header>
+  <a href="/"><img src="assets/images/Freaky.png" class="hero_img"></a>
+  <div class="search-container">
+    <input 
+      type="text" 
+      placeholder="Sök produkter..." 
+      [formControl]="searchControl"
+      (keyup.enter)="onSearch()">
+      <div class="icons">
+        <a href="/"><i class="fa-solid fa-heart"></i></a>
+        <a href="/"> <i class="fa-solid fa-basket-shopping"></i> </a>
+      </div>
+  </div>
+  <nav>
+    <a href="#">Nyheter</a>
+    <a href="#">Topplistan</a>
+    <a href="#">Rea</a>
+    <a href="#">Kampanjer</a>
+  </nav>
+</header>

@@ -1,0 +1,15 @@
+<div class="product-card">
+  <div class="product-image">
+    <a [routerLink]="['/product', name]">
+      <img 
+      [src]="imageUrl" 
+      [alt]="name" />
+      <i class="fa-regular fa-heart"></i>
+    </a>
+  </div>
+  <div class="product-info">
+    <h3>{{ name }}</h3>
+    <p class="brand">{{ brand }}</p>
+    <p class="price">{{ price | currency:'SEK':'symbol':'1.0-0' }}</p>
+  </div>
+</div>

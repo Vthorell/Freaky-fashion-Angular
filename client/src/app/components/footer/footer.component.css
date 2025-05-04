@@ -1,0 +1,12 @@
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    background: #222;
+    color: white;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  .end {
+    text-align: center;
+  }

@@ -1,0 +1,29 @@
+.hero {
+  padding: 2rem 1rem;
+  text-align: center;
+  background-size: cover;
+}
+
+/* Mobil */
+@media (max-width: 639px) {
+  .hero {
+    font-size: 1rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero {
+    font-size: 1.25rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .hero {
+    font-size: 1.5rem;
+  }
+}
+img {
+  height: 400px;
+}

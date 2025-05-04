@@ -1,0 +1,29 @@
+<!-- search-results.component.html -->
+<app-header></app-header>
+
+<div class="container">
+  <h1>Sökresultat för "{{ searchTerm }}"</h1>
+  
+  <div *ngIf="loading" class="loading">
+    Laddar resultat...
+  </div>
+  
+  <div *ngIf="!loading">
+    <div *ngIf="products.length === 0" class="no-results">
+      Inga produkter matchade din sökning.
+    </div>
+    
+    <div *ngIf="products.length > 0" class="search-results">
+      <div *ngFor="let product of products" class="product-card">
+        <img [src]="product.image_url" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p class="price">{{ product.price }} kr</p>
+        <p class="brand">{{ product.brand }}</p>
+        <p class="description">{{ product.description }}</p>
+      </div>     
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+
+</div>

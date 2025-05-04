@@ -1,0 +1,59 @@
+<div class="product-create-container">
+    <h2>Lägg till ny produkt</h2>
+    
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Namn</label>
+        <input type="text" id="name" formControlName="name" required>
+        <div *ngIf="submitted && productForm.controls['name'].errors" class="error">
+          <span *ngIf="productForm.controls['name'].errors['required']">Produktnamn krävs</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="description">Beskrivning</label>
+        <textarea id="description" formControlName="description" rows="4" required></textarea>
+        <div *ngIf="submitted && productForm.controls['description'].errors" class="error">
+          <span *ngIf="productForm.controls['description'].errors['required']">Beskrivning krävs</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="price">Pris (kr)</label>
+        <input type="number" id="price" formControlName="price" required min="0">
+        <div *ngIf="submitted && productForm.controls['price'].errors" class="error">
+          <span *ngIf="productForm.controls['price'].errors['required']">Pris krävs</span>
+          <span *ngIf="productForm.controls['price'].errors['min']">Pris måste vara minst 0</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="image_url">Bild URL</label>
+        <input type="text" id="image_url" formControlName="image_url" required>
+        <div *ngIf="submitted && productForm.controls['image_url'].errors" class="error">
+          <span *ngIf="productForm.controls['image_url'].errors['required']">Bild URL krävs</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="brand">Märke</label>
+        <input type="text" id="brand" formControlName="brand" required>
+        <div *ngIf="submitted && productForm.controls['brand'].errors" class="error">
+          <span *ngIf="productForm.controls['brand'].errors['required']">Varumärke krävs</span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="sku">SKU</label>
+        <input type="text" id="sku" formControlName="sku" required>
+        <div *ngIf="submitted && productForm.controls['sku'].errors" class="error">
+          <span *ngIf="productForm.controls['sku'].errors['required']">SKU krävs</span>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="save-button">Lägg till produkt</button>
+        <button type="button" class="cancel-button" (click)="cancel()">Avbryt</button>
+      </div>
+    </form>
+  </div>

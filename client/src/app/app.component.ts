@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';  // Importera HttpClientModule
 
 @Component({
+  standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  imports: [
+    RouterOutlet, // Endast RouterModule här
+    HttpClientModule  // Lägg till HttpClientModule här
+  ]
 })
 export class AppComponent {
-  title = 'client';
-
-  constructor(private http: HttpClient) {
-    this.http.get('/api/products').subscribe(products => {
-      console.log(products)
-    });
-  }
+  title = 'Din App';
 }
+
+
