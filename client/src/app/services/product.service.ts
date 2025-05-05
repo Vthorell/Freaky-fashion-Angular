@@ -21,6 +21,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
+  // Hämtar alla produkter
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl).pipe(
       // Logga rådata från API:et
@@ -38,6 +39,24 @@ export class ProductService {
     );
   }
 
+  // Hämtar relaterade produkter baserat på slug
+  getRelatedProducts(slug: string): Observable<Product[]> {
+    const relatedUrl = `${this.apiUrl}/${slug}/related`;
+    return this.http.get<Product[]>(relatedUrl).pipe(
+      tap(related => console.log('Relaterade produkter:', related)),
+      map(related => related.map(product => {
+        const localPath = this.getLocalImagePath(product.image_url);
+        console.log(`Konverterar bild: ${product.image_url} -> ${localPath}`);
+        
+        return {
+          ...product,
+          localImageUrl: localPath
+        };
+      })),
+      tap(processedRelated => console.log('Processerade relaterade produkter:', processedRelated))
+    );
+  }
+
   private getLocalImagePath(apiImageUrl: string): string {
     if (!apiImageUrl) {
       console.warn('Varning: image_url är tom/undefined');
@@ -48,4 +67,3 @@ export class ProductService {
     return `${this.imageBasePath}${filename}`;
   }
 }
-

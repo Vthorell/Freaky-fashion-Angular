@@ -1,22 +1,46 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ProductService, Product } from '../../services/product.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [HeaderComponent, FooterComponent, ProductCardComponent, RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, HeaderComponent, FooterComponent, ProductCardComponent, RouterModule],
   templateUrl: './product-detail.component.html',
-  styleUrl: './product-detail.component.css'
+  styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailsComponent implements OnInit {
-  productId: string | null = null;
+export class ProductDetailComponent implements OnInit {
+  product: Product | null = null;
+  relatedProducts: Product[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.productId = this.route.snapshot.paramMap.get('id');
-    console.log('Produkt ID:', this.productId);
+    // Lyssna på förändringar i paramMap (slug)
+    this.route.paramMap.subscribe(params => {
+      const slug = params.get('slug');
+      if (slug) {
+        this.loadProduct(slug);
+      }
+    });
+  }
+
+  // Ladda produkt och relaterade produkter
+  private loadProduct(slug: string): void {
+    this.productService.getProducts().subscribe(products => {
+      this.product = products.find(p => p.slug === slug) || null;
+
+      if (this.product) {
+        this.productService.getRelatedProducts(slug).subscribe(relatedProducts => {
+          this.relatedProducts = relatedProducts;
+        });
+      }
+    });
   }
 }
+
+

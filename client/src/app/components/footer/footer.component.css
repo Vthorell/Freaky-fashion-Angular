@@ -10,3 +10,39 @@ footer {
   .end {
     text-align: center;
   }
+
+  .features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 40px;
+  }
+  
+  .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+  }
+  
+  .feature i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Tablet: 2 kolumner */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .features {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Desktop: 4 kolumner */
+  @media (min-width: 1024px) {
+    .features {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  

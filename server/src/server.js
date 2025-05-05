@@ -145,6 +145,28 @@ app.get('/api/products/:slug', (req, res) => {
     }
   });
 
+  // Hämtar 3 slumpmässiga produkter som inte är samma som slug
+app.get('/api/products/:slug/related', (req, res) => {
+  const { slug } = req.params;
+
+  const select = db.prepare(`
+    SELECT id, name, description, image_url, slug, price, brand, sku
+    FROM products
+    WHERE slug != ?
+    ORDER BY RANDOM()
+    LIMIT 3
+  `);
+
+  try {
+    const related = select.all(slug);
+    res.json(related);
+  } catch (error) {
+    console.error('Fel vid hämtning av relaterade produkter:', error);
+    res.status(500).json({ error: 'Serverfel vid relaterade produkter' });
+  }
+});
+
+
 app.listen(port, () => {
   console.log(`Servern lyssnar på port ${port}`);
 });

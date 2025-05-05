@@ -1,64 +1,90 @@
-/* Mobil (<640px) */
-header {
+/* Mobil först */
+.top-bar {
+  display: flex;
   flex-direction: column;
-  text-align: center;
-  position: relative;
-  margin-bottom: 40px;
+  align-items: center;
+  gap: 1rem;
 }
 
-input {
-  width: 100%;
-  margin-top: 1rem;
-  height: 50px;
-  border-radius: 10px;
-  margin-bottom: 40px;
-}
-@media (max-width: 640px) {
-  nav {
-    display: grid;
-    grid-template-rows: 1fr;
-    position: absolute;
-    left: 0;
-  }
-}
-/* Tablet (≥640px) */
-@media (min-width: 640px) {
-  header {
-    flex-direction: row;
-    text-align: left;
-  }
-
-  input {
-    width: auto;
-    margin-top: 0;
-  }
-}
-
-/* Desktop (≥1024px) */
-@media (min-width: 1024px) {
-  nav a {
-    font-size: 1.1rem;
-    margin: 0 1rem;
-  }
-
-  .logo {
-    font-size: 2rem;
-  }
+.hero_img {
+  width: 80%;
+  max-width: 320px;
+  height: auto;
 }
 
 .search-container {
-  display: grid;
-  grid-template-columns: 4fr 1fr 1fr;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
-i {
-  position: absolute;
-  right: 0;
-  font-size: 2rem;
+
+.search-container input {
+  width: 90%;
+  max-width: 400px;
+  padding: 0.5rem;
+  height: 50px;
+  border-radius: 10px;
 }
-.fa-heart {
-  margin-right: 100px;
+
+.icons {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem; /* mindre gap mellan ikoner */
 }
-img {
-  height: 300px;
+
+/* Navigation */
+nav {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* Desktop ≥ 640px */
+@media (min-width: 640px) {
+  .top-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav {
+    display: grid;
+    grid-template-rows: 1fr;
+    justify-content: left;
+  }
+
+  .hero_img {
+    width: 200px;
+    margin-right: 1rem;
+  }
+
+  .search-container {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
+    gap: 0.25rem; /* mindre mellan input och ikoner */
+  }
+
+  .search-container input {
+    width: 300px;
+  }
+
+  .icons {
+    margin-top: 0;
+    gap: 1rem;
+    margin-left: 2rem; 
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1024px)
+{
+  .hero_img {
+    width: 400px;
+    margin-right: 1rem;
+  }
 }

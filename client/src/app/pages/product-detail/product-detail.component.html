@@ -1,6 +1,30 @@
-<main>
-    <h2>Produktdetaljer</h2>
-<p>Produkt-ID: {{ productId }}</p>
-<!-- Här lägger du sen till riktiga produktdata -->
+<app-header></app-header>
 
-</main>
+<div *ngIf="product" class="product-details">
+  <div class="main-product">
+    <img [src]="product.localImageUrl" [alt]="product.name" />
+    <div class="info">
+      <h2>{{ product.name }}</h2>
+      <p class="brand">{{ product.brand }}</p>
+      <p class="description">{{ product.description }}</p>
+      <p class="price">{{ product.price | currency: 'SEK' }}</p>
+      <button>Lägg i varukorg</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="relatedProducts.length > 0" class="related-products">
+  <h3>Liknande produkter</h3>
+  <div class="product-grid">
+    <div *ngFor="let p of relatedProducts" class="app-product-card">
+
+      <a [routerLink]="['/product', p.slug]" class="product-link">
+        <img [src]="p.localImageUrl" [alt]="p.name" />
+    </a>
+        <h4>{{ p.name }}</h4>
+        <p>{{ p.price | currency: 'SEK' }}</p>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

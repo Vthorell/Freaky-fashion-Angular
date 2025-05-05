@@ -1,7 +1,6 @@
-// search-results.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HeaderComponent } from '../../components/header/header.component';
 import { Product } from '../../models/product.model';
@@ -10,7 +9,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
 @Component({
   selector: 'app-search-results',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent],
+  imports: [CommonModule, HeaderComponent, FooterComponent, RouterModule],
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.css']
 })
@@ -50,5 +49,4 @@ export class SearchResultsComponent implements OnInit {
       }
     );
   }
-  
 }

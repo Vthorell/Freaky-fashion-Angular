@@ -5,7 +5,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { ProductListComponent } from './admin/product-list/product-list.component';
 import { ProductCreateComponent } from './admin/product-create/product-create.component';
-import { ProductDetailsComponent } from './pages/product-detail/product-detail.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 // app.routes.ts
 // I dina routes
@@ -21,7 +21,7 @@ export const routes: Routes = [
       ]
     },
     { path: 'search', component: SearchResultsComponent },
-    {path: 'product/:id', component: ProductDetailsComponent },
+    {path: 'product/:slug', component: ProductDetailComponent },
   ];
   
 

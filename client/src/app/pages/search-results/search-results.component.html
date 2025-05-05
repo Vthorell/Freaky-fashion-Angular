@@ -1,4 +1,3 @@
-<!-- search-results.component.html -->
 <app-header></app-header>
 
 <div class="container">
@@ -12,11 +11,15 @@
     <div *ngIf="products.length === 0" class="no-results">
       Inga produkter matchade din sökning.
     </div>
+    <p *ngIf="products.length > 0" class="result-count">Hittade {{ products.length }} produkt(er).</p>
     
     <div *ngIf="products.length > 0" class="search-results">
       <div *ngFor="let product of products" class="product-card">
-        <img [src]="product.image_url" alt="{{ product.name }}">
-        <h3>{{ product.name }}</h3>
+        <!-- Lägg till routerLink för att länka till produktens detaljsida -->
+        <a [routerLink]="['/product', product.slug]">
+          <img [src]="product.image_url" alt="{{ product.name }}">
+          <h3>{{ product.name }}</h3>
+        </a>
         <p class="price">{{ product.price }} kr</p>
         <p class="brand">{{ product.brand }}</p>
         <p class="description">{{ product.description }}</p>
@@ -25,5 +28,4 @@
   </div>
 
   <app-footer></app-footer>
-
 </div>

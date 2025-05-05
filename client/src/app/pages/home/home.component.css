@@ -1,0 +1,12 @@
+h2{ text-align: center;}
+
+.spots {
+    display: block;
+}
+  
+  @media (max-width: 1024px) {
+    .spots {
+      display: none;
+    }
+  }
+  
