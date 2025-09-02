@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  searchControl = new FormControl(''); // 👈 Lägg till denna rad!
+  searchControl = new FormControl(''); 
   
   constructor(private router: Router) {}
 
@@ -20,7 +20,7 @@ export class HeaderComponent {
     const term = this.searchControl.value?.trim();
     if (term) {
       this.router.navigate(['/search'], {
-        queryParams: { term: encodeURIComponent(term) } // 👈 ENCODE
+        queryParams: { term: encodeURIComponent(term) } 
       });
     }
   }
